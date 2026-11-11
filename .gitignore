@@ -1,0 +1,5 @@
+node_modules/
+botData/*
+!botData/
+!botData/.gitkeep
+.env

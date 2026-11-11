@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Entrar no Robô de Moedas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body class="login-page">
+    <main class="login-box">
+        <h1>Robô de Moedas</h1>
+
+        <form id="login-form" class="login-form">
+            <label>
+                Usuário
+                <input name="username" autocomplete="username" autocapitalize="none" required autofocus>
+            </label>
+            <label>
+                Senha
+                <input name="password" type="password" autocomplete="current-password" required>
+            </label>
+            <p id="login-error" class="form-error" role="alert"></p>
+            <button type="submit" class="button button-primary">Entrar</button>
+        </form>
+    </main>
+
+    <script src="/login.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,757 @@
+:root {
+    --paper: #eef0ea;
+    --surface: #ffffff;
+    --ink: #1a1f1c;
+    --muted: #646b65;
+    --rule: #d3d7ce;
+    --up: #14784a;
+    --up-tint: #d6ebdf;
+    --down: #b83d2a;
+    --down-tint: #f3dcd6;
+    --action: #24406a;
+    --focus: #24406a;
+
+    --step--1: 0.8125rem;
+    --step-0: 0.9375rem;
+    --step-1: 1.25rem;
+    --step-2: 1.625rem;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Archivo, "Segoe UI", system-ui, sans-serif;
+    font-size: var(--step-0);
+    line-height: 1.45;
+}
+
+h1,
+h2,
+p {
+    margin: 0;
+}
+
+button,
+input,
+select {
+    font: inherit;
+    color: inherit;
+}
+
+:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+}
+
+.num {
+    font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Topo ---------- */
+
+.masthead {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: 16px 32px;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 32px 24px 20px;
+}
+
+h1 {
+    font-size: var(--step-2);
+    font-stretch: 125%;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+}
+
+.account {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.current-user {
+    color: var(--muted);
+}
+
+/* ---------- WhatsApp ---------- */
+
+.whatsapp {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(280px, 1fr);
+    gap: 24px 48px;
+    max-width: 1192px;
+    margin: 0 auto 28px;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 20px 24px;
+    background: var(--surface);
+}
+
+.whatsapp h2 {
+    margin-bottom: 10px;
+    font-size: var(--step-0);
+    font-weight: 700;
+}
+
+.whatsapp-connection > div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 20px;
+}
+
+.wa-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 8px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--rule);
+}
+
+.dot.is-on {
+    background: var(--up);
+}
+
+.dot.is-off {
+    background: var(--down);
+}
+
+.wa-qr {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 24px;
+}
+
+.qr-code {
+    flex: none;
+    width: 184px;
+    height: 184px;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 8px;
+    background: #fff;
+}
+
+.qr-code svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.wa-qr ol {
+    max-width: 40ch;
+    margin: 0;
+    padding-left: 1.2em;
+    font-size: var(--step--1);
+}
+
+.wa-qr li + li {
+    margin-top: 6px;
+}
+
+.group-form {
+    display: grid;
+    align-content: start;
+    gap: 8px;
+}
+
+.group-form label {
+    font-size: var(--step-0);
+    font-weight: 700;
+}
+
+.hint {
+    color: var(--muted);
+    font-size: var(--step--1);
+}
+
+.hint:empty {
+    display: none;
+}
+
+.inline-field {
+    display: flex;
+    gap: 8px;
+}
+
+/* ---------- Controles ---------- */
+
+input,
+select {
+    width: 100%;
+    min-height: 40px;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 0 12px;
+    background: var(--surface);
+}
+
+input:focus-visible,
+select:focus-visible {
+    border-color: var(--focus);
+    outline-offset: 0;
+}
+
+input[readonly] {
+    background: var(--paper);
+    color: var(--muted);
+}
+
+.button {
+    flex: none;
+    min-height: 40px;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 0 16px;
+    background: var(--surface);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.button:hover {
+    border-color: var(--ink);
+}
+
+.button-primary {
+    border-color: var(--action);
+    background: var(--action);
+    color: #fff;
+}
+
+.button-primary:hover {
+    border-color: var(--ink);
+    background: var(--ink);
+}
+
+.button[aria-busy="true"] {
+    cursor: progress;
+    opacity: 0.6;
+}
+
+.link-button {
+    border: 0;
+    padding: 4px 2px;
+    background: none;
+    color: var(--action);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.link-button:hover {
+    text-decoration: underline;
+}
+
+.link-button.danger {
+    color: var(--down);
+}
+
+/* ---------- Lista ---------- */
+
+.board {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px 48px;
+}
+
+.board-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 0;
+    border-top: 2px solid var(--ink);
+}
+
+.summary {
+    color: var(--muted);
+}
+
+.board-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.coin-list {
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    background: var(--surface);
+    overflow: hidden;
+}
+
+.coin-row {
+    display: grid;
+    grid-template-columns: minmax(140px, 1fr) 112px minmax(170px, 1fr) minmax(280px, 2.2fr) auto;
+    align-items: center;
+    gap: 28px;
+    padding: 18px 24px;
+}
+
+.coin-row + .coin-row {
+    border-top: 1px solid var(--rule);
+}
+
+.coin-symbol {
+    font-size: var(--step-1);
+    font-stretch: 110%;
+    font-weight: 750;
+    line-height: 1.15;
+}
+
+.coin-symbol small {
+    color: var(--muted);
+    font-size: var(--step-0);
+    font-weight: 500;
+}
+
+.coin-name {
+    color: var(--muted);
+    font-size: var(--step--1);
+}
+
+.spark {
+    display: block;
+    width: 112px;
+    height: 36px;
+    overflow: visible;
+}
+
+.spark polyline {
+    fill: none;
+    stroke: var(--ink);
+    stroke-width: 1.5;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+}
+
+.spark-empty {
+    color: var(--muted);
+    font-size: var(--step--1);
+}
+
+.price {
+    font-size: var(--step-1);
+    font-stretch: 115%;
+    font-weight: 700;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.change {
+    display: block;
+    font-size: var(--step--1);
+    font-stretch: 100%;
+    font-weight: 500;
+}
+
+.is-up {
+    color: var(--up);
+}
+
+.is-down {
+    color: var(--down);
+}
+
+.row-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.coin-row.paused .spark,
+.coin-row.paused .price,
+.coin-row.paused .band-track {
+    opacity: 0.45;
+}
+
+.empty-state {
+    display: grid;
+    justify-items: start;
+    gap: 12px;
+    padding: 32px 24px;
+    color: var(--muted);
+}
+
+/* ---------- Faixa de alerta ---------- */
+
+.band {
+    display: grid;
+    gap: 6px;
+    font-size: var(--step--1);
+}
+
+.band-track {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 10px;
+    border-radius: 5px;
+    overflow: visible;
+}
+
+.band-half {
+    background: var(--down-tint);
+}
+
+.band-half:first-child {
+    border-radius: 5px 0 0 5px;
+}
+
+.band-half:last-child {
+    border-radius: 0 5px 5px 0;
+    background: var(--up-tint);
+}
+
+.band-half.off {
+    background: repeating-linear-gradient(-45deg, var(--paper) 0 4px, var(--rule) 4px 5px);
+}
+
+.band-fill {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    transition: left 0.5s ease, width 0.5s ease;
+}
+
+.band-fill.is-up {
+    background: var(--up);
+}
+
+.band-fill.is-down {
+    background: var(--down);
+}
+
+.band-ref {
+    position: absolute;
+    top: -5px;
+    bottom: -5px;
+    left: 50%;
+    width: 2px;
+    margin-left: -1px;
+    background: var(--ink);
+}
+
+.band-marker {
+    position: absolute;
+    top: 50%;
+    width: 16px;
+    height: 16px;
+    border: 3px solid var(--surface);
+    border-radius: 50%;
+    background: var(--ink);
+    box-shadow: 0 0 0 1px var(--ink);
+    transform: translate(-50%, -50%);
+    transition: left 0.5s ease;
+}
+
+.band-ends {
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+}
+
+.band-note {
+    color: var(--ink);
+}
+
+/* ---------- Rodapé ---------- */
+
+.commands {
+    margin-top: 20px;
+    color: var(--muted);
+    font-size: var(--step--1);
+}
+
+code {
+    margin-right: 4px;
+    border-radius: 4px;
+    padding: 2px 6px;
+    background: var(--surface);
+    color: var(--ink);
+    font-family: Consolas, "SFMono-Regular", monospace;
+    font-size: 0.95em;
+}
+
+/* ---------- Formulário ---------- */
+
+.coin-dialog {
+    width: min(480px, calc(100vw - 32px));
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 0;
+    background: var(--surface);
+    color: var(--ink);
+}
+
+.coin-dialog::backdrop {
+    background: rgb(26 31 28 / 0.4);
+}
+
+.coin-form {
+    display: grid;
+    gap: 16px;
+    padding: 24px;
+}
+
+.coin-form h2 {
+    font-size: var(--step-1);
+    font-stretch: 110%;
+    font-weight: 750;
+}
+
+.coin-form label {
+    display: grid;
+    gap: 6px;
+    font-size: var(--step--1);
+    font-weight: 600;
+}
+
+.field-row,
+.thresholds {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.thresholds {
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+.thresholds legend {
+    grid-column: 1 / -1;
+    margin-bottom: 8px;
+    padding: 0;
+    color: var(--muted);
+    font-size: var(--step--1);
+}
+
+.coin-form .toggle-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: var(--step-0);
+    font-weight: 500;
+}
+
+.toggle-row input {
+    width: 18px;
+    min-height: 18px;
+    accent-color: var(--action);
+}
+
+.dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    padding-top: 8px;
+}
+
+/* ---------- Usuários ---------- */
+
+.user-list {
+    margin: 0;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 0;
+    list-style: none;
+}
+
+.user-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 44px;
+    padding: 6px 14px;
+}
+
+.user-list li + li {
+    border-top: 1px solid var(--rule);
+}
+
+.user-list small {
+    color: var(--muted);
+}
+
+.user-form {
+    display: grid;
+    gap: 12px;
+}
+
+.user-form h3 {
+    margin: 4px 0 0;
+    font-size: var(--step-0);
+}
+
+/* ---------- Login ---------- */
+
+.login-page {
+    display: grid;
+    place-items: center;
+    padding: 24px 16px;
+}
+
+.login-box {
+    display: grid;
+    gap: 24px;
+    width: min(360px, 100%);
+}
+
+.login-form {
+    display: grid;
+    gap: 14px;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 24px;
+    background: var(--surface);
+}
+
+.login-form label {
+    display: grid;
+    gap: 6px;
+    font-size: var(--step--1);
+    font-weight: 600;
+}
+
+.form-error {
+    color: var(--down);
+    font-size: var(--step--1);
+}
+
+.form-error:empty {
+    display: none;
+}
+
+/* ---------- Aviso ---------- */
+
+.toast {
+    inset: auto 16px 16px auto;
+    max-width: min(420px, calc(100vw - 32px));
+    margin: 0;
+    border: 0;
+    border-radius: 8px;
+    padding: 12px 16px;
+    background: var(--ink);
+    color: #fff;
+    pointer-events: none;
+    transition: opacity 180ms ease, transform 180ms ease;
+}
+
+@starting-style {
+    .toast:popover-open {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+}
+
+/* ---------- Telas menores ---------- */
+
+@media (max-width: 1080px) {
+    .coin-row {
+        grid-template-columns: minmax(140px, 1fr) 112px auto;
+        gap: 14px 24px;
+    }
+
+    .band {
+        grid-column: 1 / -2;
+    }
+
+    .row-actions {
+        grid-column: -2 / -1;
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 1240px) {
+    .whatsapp {
+        margin-left: 24px;
+        margin-right: 24px;
+    }
+}
+
+@media (max-width: 860px) {
+    .whatsapp {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 620px) {
+    .masthead,
+    .board {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .whatsapp {
+        margin-left: 16px;
+        margin-right: 16px;
+        padding: 16px;
+    }
+
+    .inline-field .button {
+        padding: 0 12px;
+    }
+
+    .board-actions {
+        width: 100%;
+    }
+
+    .board-actions .button {
+        flex: 1;
+    }
+
+    .coin-row {
+        grid-template-columns: 1fr auto;
+        padding: 16px;
+    }
+
+    .spark-cell {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+
+    .spark {
+        width: 100%;
+    }
+
+    .band,
+    .row-actions {
+        grid-column: 1 / -1;
+    }
+
+    .row-actions {
+        justify-content: flex-start;
+    }
+
+    .field-row,
+    .thresholds {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+}

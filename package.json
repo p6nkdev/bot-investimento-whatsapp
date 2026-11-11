@@ -1,0 +1,23 @@
+{
+  "name": "bot-moedas",
+  "version": "2.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env index.js",
+    "test": "node --test"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@hapi/boom": "^10.0.1",
+    "@whiskeysockets/baileys": "^7.0.0-rc13",
+    "axios": "^1.15.0",
+    "mysql2": "^3.24.6",
+    "node-cron": "^4.2.1",
+    "qrcode": "^1.5.4"
+  },
+  "engines": {
+    "node": ">=22.9"
+  }
+}

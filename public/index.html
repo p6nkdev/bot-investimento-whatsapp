@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Robô de Moedas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <header class="masthead">
+        <h1>Robô de Moedas</h1>
+
+        <nav class="account" aria-label="Conta">
+            <span id="current-user" class="current-user"></span>
+            <button id="open-users" class="link-button" type="button">Usuários</button>
+            <button id="logout" class="link-button" type="button">Sair</button>
+        </nav>
+    </header>
+
+    <section class="whatsapp" aria-labelledby="whatsapp-title">
+        <div class="whatsapp-connection">
+            <h2 id="whatsapp-title">WhatsApp</h2>
+            <div id="whatsapp-status" aria-live="polite"></div>
+        </div>
+
+        <form id="group-form" class="group-form">
+            <label for="chat-select">Conversa que recebe os alertas</label>
+            <div class="inline-field">
+                <select id="chat-select" name="chatSelect"></select>
+                <button type="submit" class="button">Salvar</button>
+            </div>
+            <input id="chat-id" name="chatId" autocomplete="off" placeholder="ID da conversa, ex.: 120363...@g.us" hidden>
+            <p id="chat-hint" class="hint"></p>
+        </form>
+    </section>
+
+    <main class="board">
+        <div class="board-bar">
+            <p id="summary" class="summary" aria-live="polite"></p>
+            <div class="board-actions">
+                <button id="refresh-prices" class="button" type="button">Atualizar preços</button>
+                <button id="new-coin" class="button button-primary" type="button">Adicionar ativo</button>
+            </div>
+        </div>
+
+        <section id="coin-list" class="coin-list" aria-label="Ativos monitorados"></section>
+
+        <p class="commands">
+            No WhatsApp: <code>!preco BTC</code> <code>!historico BTC</code> <code>!moedas</code> <code>!help</code>
+        </p>
+    </main>
+
+    <dialog id="coin-dialog" class="coin-dialog" aria-labelledby="form-title">
+        <form id="coin-form" class="coin-form">
+            <input type="hidden" id="editing-symbol" name="editingSymbol">
+            <h2 id="form-title">Novo ativo</h2>
+
+            <div class="field-row">
+                <label>
+                    Tipo
+                    <select id="type" name="type" required>
+                        <option value="crypto">Criptomoeda (Binance)</option>
+                        <option value="acao">Ação (B3)</option>
+                    </select>
+                </label>
+                <label>
+                    Sigla
+                    <input id="symbol" name="symbol" required maxlength="12" placeholder="ETH" autocomplete="off">
+                </label>
+            </div>
+
+            <div class="field-row">
+                <label>
+                    Nome
+                    <input id="name" name="name" required placeholder="Ethereum" autocomplete="off">
+                </label>
+                <label>
+                    Cotação
+                    <input id="quote" name="quote" required maxlength="8" value="BRL">
+                </label>
+            </div>
+
+            <fieldset class="thresholds">
+                <legend>Avisar no grupo quando o preço variar, desde o último alerta:</legend>
+                <label>
+                    Subir
+                    <input id="alert-up" name="alertUp" type="number" min="0" step="any" required placeholder="0 desliga">
+                </label>
+                <label>
+                    Cair
+                    <input id="alert-down" name="alertDown" type="number" min="0" step="any" required placeholder="0 desliga">
+                </label>
+            </fieldset>
+
+            <label class="toggle-row">
+                <input id="enabled" name="enabled" type="checkbox" checked>
+                Monitorar este ativo
+            </label>
+
+            <div class="dialog-actions">
+                <button type="button" id="cancel-form" class="button">Cancelar</button>
+                <button type="submit" class="button button-primary">Salvar</button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog id="users-dialog" class="coin-dialog" aria-labelledby="users-title">
+        <div class="coin-form">
+            <h2 id="users-title">Usuários do painel</h2>
+            <ul id="user-list" class="user-list"></ul>
+
+            <form id="user-form" class="user-form">
+                <h3>Novo usuário</h3>
+                <div class="field-row">
+                    <label>
+                        Usuário
+                        <input name="username" required minlength="3" maxlength="32" autocomplete="off" autocapitalize="none"
+                               pattern="[a-zA-Z0-9._\-]+" title="Letras, números, ponto, hífen ou sublinhado">
+                    </label>
+                    <label>
+                        Senha
+                        <input name="password" type="password" required minlength="8" autocomplete="new-password">
+                    </label>
+                </div>
+                <div class="dialog-actions">
+                    <button type="button" id="close-users" class="button">Fechar</button>
+                    <button type="submit" class="button button-primary">Adicionar usuário</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" popover="manual"></div>
+
+    <script src="/app.js"></script>
+</body>
+
+</html>
